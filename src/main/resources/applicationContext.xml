@@ -13,7 +13,7 @@
 <!-- 加载配置文件 -->
 
     <!--自动扫描@Autowired-->
-	<!--	<context:annotation-config />-->
+		<context:annotation-config />
 
     <!--自动扫描@Component-->
 	<context:component-scan base-package="yang.mybatis.dao" />

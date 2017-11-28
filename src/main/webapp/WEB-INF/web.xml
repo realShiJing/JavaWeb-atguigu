@@ -6,6 +6,32 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+    <!--filter测试-->
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>1234</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>sessionKey</param-name>
+        <param-value>username</param-value>
+    </context-param>
+    <context-param>
+        <param-name>uncheckedUrl</param-name>
+        <param-value>/jsp/testfilter2/a.jsp,/jsp/testfilter2/login.jsp,/jsp/testfilter2/list.jsp,/jsp/testfilter2/dologin.jsp,/jsp/testfilter2/logout.jsp</param-value>
+    </context-param>
+    <context-param>
+        <param-name>redictUrl</param-name>
+        <param-value>/jsp/testfilter2/login.jsp</param-value>
+    </context-param>
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>yang.mybatis.filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/jsp/testfilter2/*</url-pattern>
+    </filter-mapping>
     <!-- 配置前端控制器DispatcherServlet -->
     <servlet>
         <servlet-name>springmvc</servlet-name>
@@ -15,11 +41,107 @@
             <param-value>classpath:springmvc-servlet</param-value>
         </init-param>-->
     </servlet>
+    <servlet>
+        <servlet-name>ListAllStudent</servlet-name>
+        <servlet-class>yang.mybatis.servlet.ListAllStudent</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteServlet</servlet-name>
+        <servlet-class>yang.mybatis.servlet.DeleteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CustomerServlet</servlet-name>
+        <servlet-class>yang.mybatis.servlet.customer.CustomerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>InitServlet</servlet-name>
+        <servlet-class>yang.mybatis.servlet.customer.InitServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>ProcessStep1</servlet-name>
+        <servlet-class>yang.mybatis.servlet.shoppingCart.ProcessStep1</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProcessStep2</servlet-name>
+        <servlet-class>yang.mybatis.servlet.shoppingCart.ProcessStep2</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TokenServlet</servlet-name>
+        <servlet-class>yang.mybatis.servlet.token.TokenServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CheckCodeServlet</servlet-name>
+        <servlet-class>yang.mybatis.servlet.checkCode.CheckCodeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ValidateColorServlet</servlet-name>
+        <servlet-class>yang.mybatis.servlet.checkCode.ValidateColorServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ValidateColorServlet</servlet-name>
+        <url-pattern>/validateColorServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckCodeServlet</servlet-name>
+        <url-pattern>/checkCodeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TokenServlet</servlet-name>
+        <url-pattern>/tokenServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcessStep2</servlet-name>
+        <url-pattern>/processStep2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcessStep1</servlet-name>
+        <url-pattern>/processStep1</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InitServlet</servlet-name>
+        <url-pattern>/initservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerServlet</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteServlet</servlet-name>
+        <url-pattern>/deleteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListAllStudent</servlet-name>
+        <url-pattern>/listAllStudent</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>springmvc</servlet-name>
         <url-pattern>*.action</url-pattern>
     </servlet-mapping>
+
+    <!--Filter 过滤器-->
+    <filter>
+        <filter-name>UserNameFilter</filter-name>
+        <filter-class>yang.mybatis.filter.UserNameFilter</filter-class>
+        <init-param>
+            <param-name>username</param-name>
+            <param-value>Tom</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>UserNameFilter</filter-name>
+        <url-pattern>/jsp/testfilter/hello.jsp</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>PassWordFilter</filter-name>
+        <filter-class>yang.mybatis.filter.PassWordFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>PassWordFilter</filter-name>
+        <url-pattern>/jsp/testfilter/hello.jsp</url-pattern>
+    </filter-mapping>
     <!-- 指定Spring Bean的配置文件所在目录。默认配置在WEB-INF目录下 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>

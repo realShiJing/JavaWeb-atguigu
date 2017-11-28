@@ -10,4 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertUser" parameterType="yang.mybatis.domain.User">
 		insert into myuser (id,name,age) values (#{id},#{name},#{age})		
 	</insert>
+	<select id="list" resultType="yang.mybatis.domain.User">
+		SELECT * FROM myuser;
+	</select>
 </mapper>

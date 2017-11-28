@@ -8,8 +8,11 @@ import org.springframework.web.multipart.MultipartFile;
 import yang.mybatis.dao.UserDaoImp;
 import yang.mybatis.domain.User;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by root on 2017/8/18 0018.
@@ -35,6 +38,16 @@ public class MyAction {
         User user=userDaoImp.findUserById(1);
         model.put("user",user);
         return "/test01/index.jsp";
+    }
+    @RequestMapping(value = "/listAllStudent")
+    public String test03(HttpServletRequest request, HttpServletResponse response) throws  Exception{
+        try {
+            List<User> list = userDaoImp.list();
+            request.setAttribute("list",list);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "/jsp/hello1.jsp";
     }
     /**
      * 文件上传

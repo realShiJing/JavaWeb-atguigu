@@ -13,6 +13,7 @@ import yang.mybatis.domain.User;
 public class UserTest {
 			@Autowired
 			UserDaoImp userDaoImp;
+
 	   
 //	    public static void main(String[] args) throws Exception{
 	    	/*//创建sqlSessionFactory
@@ -44,8 +45,9 @@ public class UserTest {
 //	    }
 	@Test
 	public void run () throws Exception {
-		User user=userDaoImp.findUserById(1);
-		System.out.println(user);
+		/*User user=userDaoImp.findUserById(1);
+		System.out.println(user);*/
+
 	}
 	@Test
 	public void run1 () throws Exception {
